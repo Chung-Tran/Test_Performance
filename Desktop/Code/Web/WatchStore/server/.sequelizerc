@@ -1,8 +1,0 @@
-import {resolve} from 'path'
-
-export default {
-  config: resolve('./src/config', 'config.json'),
-  'migrations-path': resolve('./src', 'migrations'),
-  'models-path': resolve('./src', 'models'),
-  'seeders-path': resolve('./src', 'seeders')
-};
