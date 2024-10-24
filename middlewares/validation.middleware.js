@@ -5,6 +5,7 @@
  * @returns {Function(req: Object, res: Object, next: Function): void}
  */
 const validateBodyRequest = (schema) => (req, res, next) => {
+    console.log(req.body)
     const { error } = schema.validate(req.body, { abortEarly: false });
     if (error) {
 

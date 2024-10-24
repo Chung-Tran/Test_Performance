@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dbConnect = require("./config/dbConnect");
-// const redisClient = require('./config/redis');
+const redisClient = require('./config/redis');
 const http = require("http");
 const {
   getStudentDetail,
@@ -22,7 +22,7 @@ const server = http.createServer(app);
 dbConnect();
 
 // Connect redis server in docker
-// redisClient.connect();
+redisClient.connect();
 
 app.use(bodyParser.json());
 app.use(cors());

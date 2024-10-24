@@ -19,7 +19,6 @@ const getStudentDetail = async (req, res) => {
           as: "faculty",
         },
       },
-      { $unwind: "$faculty" },
       {
         $lookup: {
           from: "classadvisors",
@@ -28,19 +27,12 @@ const getStudentDetail = async (req, res) => {
           as: "classAdvisor",
         },
       },
-      { $unwind: { path: "$classAdvisor", preserveNullAndEmptyArrays: true } },
       {
         $lookup: {
           from: "teachers",
           localField: "classAdvisor.teacher",
           foreignField: "_id",
           as: "classAdvisor.teacher",
-        },
-      },
-      {
-        $unwind: {
-          path: "$classAdvisor.teacher",
-          preserveNullAndEmptyArrays: true,
         },
       },
       {
@@ -51,7 +43,6 @@ const getStudentDetail = async (req, res) => {
           as: "status",
         },
       },
-      { $unwind: "$status" },
       {
         $lookup: {
           from: "thesisprojects",
@@ -86,7 +77,6 @@ const getStudentDetail = async (req, res) => {
           as: "thesisProject",
         },
       },
-      { $unwind: { path: "$thesisProject", preserveNullAndEmptyArrays: true } },
       {
         $project: {
           _id: 1,
@@ -162,7 +152,6 @@ const getStudentDetailWithCache = async (req, res) => {
           as: "faculty",
         },
       },
-      { $unwind: "$faculty" },
       {
         $lookup: {
           from: "classadvisors",
@@ -171,19 +160,12 @@ const getStudentDetailWithCache = async (req, res) => {
           as: "classAdvisor",
         },
       },
-      { $unwind: { path: "$classAdvisor", preserveNullAndEmptyArrays: true } },
       {
         $lookup: {
           from: "teachers",
           localField: "classAdvisor.teacher",
           foreignField: "_id",
           as: "classAdvisor.teacher",
-        },
-      },
-      {
-        $unwind: {
-          path: "$classAdvisor.teacher",
-          preserveNullAndEmptyArrays: true,
         },
       },
       {
@@ -194,7 +176,6 @@ const getStudentDetailWithCache = async (req, res) => {
           as: "status",
         },
       },
-      { $unwind: "$status" },
       {
         $lookup: {
           from: "thesisprojects",
@@ -229,7 +210,6 @@ const getStudentDetailWithCache = async (req, res) => {
           as: "thesisProject",
         },
       },
-      { $unwind: { path: "$thesisProject", preserveNullAndEmptyArrays: true } },
       {
         $project: {
           _id: 1,
